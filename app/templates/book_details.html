@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="container add-padding" id="book-details">
+    <h2><span>{{ book[0] }}</span></h2>
+    <p id="book-d-author"><span>Author:</span> {{ book[1] }}</p>
+    <p id="book-d-genre"><span>Average Rating:</span> {{ book[2] }}</p>
+    <p><span>Language:</span> {{ book[3] }}</p>
+    <p><span>Number of Pages:</span> {{ book[4] }}</p>
+    <p><span>Ratings Count:</span> {{ book[5] }}</p>
+    <p><span>Publication Date:</span> {{ book[6] }}</p>
+    <p><span>Publisher:</span> {{ book[7] }}</p>
+    <button class="top-submit-btn btn" type="submit">Add to My Books</button>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BookXchange</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap dropdowns and modals) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--Local JS-->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+
+    <!--Local CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <img id="logo" src="{{ url_for('static', filename='images/logo-nobackground.png') }}" alt="Logo">
+            </a>
+
+            <!-- Navigation Links on the right -->
+            <div class="navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('main.list_book') }}">Add a Book</a></li>
+                                        
+                    {% if session['user_id'] %}
+                        <!-- If user is logged in, show logout button -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <!-- If user is not logged in, show signup/login links -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Sign up/Login
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url_for('main.signup') }}">Create a new account</a>
+                                <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
+                                <a class="dropdown-item" href="{{ url_for('main.my_books') }}">My Books</a>
+                            </div>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="container">
+        {% block available_books %}{% endblock %}
+    </div>
+
+    <div id="error-message"></div>
+
+</body>
+
+</html>

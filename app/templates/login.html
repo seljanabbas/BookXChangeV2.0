@@ -1,0 +1,35 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<main>
+    <section class="intro"> <!-- Intro Section -->
+        <h1>Login to Your Account</h1>
+        <p><span>Sign in to access your BookXchange account and start exploring a world of books. If you don't have an account, you can <a href="{{ url_for('main.signup') }}">sign up here</a>.</span></p>
+    </section>
+
+    <section> <!-- Login Section-->
+        <form id="form-full" action="/login" method="POST">
+            <div class="input-form">
+                <h1 id="signup-title">Login Here!</h1>
+
+                <div>
+                    <input class="fname-field" type="username" name="username" placeholder="Username" required>
+                    <p class="email-error-message email-success-message txt"></p>
+                </div>
+
+                <div>
+                    <input class="pwd-field" type="password" name="pwd" placeholder="Password" required>
+                    <p class="pwd-error-message pwd-success-message txt"></p>
+                </div>
+
+                <div>
+                    <button class="btm-submit-btn" type="submit">Login</button>
+                </div>
+
+                <p>Don't have an account yet? <a href="{{ url_for('main.signup') }}">Sign up here</a></p>
+            </div>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

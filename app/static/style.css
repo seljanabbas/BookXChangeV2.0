@@ -1,0 +1,611 @@
+/* Global CSS */
+
+:root {
+  --darkchoco: #2D2424;
+  --choco: #5C3D2E;
+  --autumn: #B85C38;
+  --cream: #E0C097;
+}
+
+body {
+    color: var(--cream);
+    font-family: Montserrat;
+    margin: 0;
+    background-color: var(--darkchoco);
+    background-repeat: repeat;
+    font-size: 18px;
+  }
+
+
+  a {
+    color: var(--autumn);
+  }
+  
+  #logo {
+    display: block;
+    max-height: 150px;
+    margin: 20px;
+  }
+
+  #nav-bar {
+    margin-left: 400px;
+  }
+
+  #nav-bar .main {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 0;
+  }
+
+  
+  #nav-bar a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  
+  #nav-bar a:hover {
+    color: var(--autumn);
+  }
+
+  .centered-h2 {
+    display: flex; /* Use flexbox to layout the container */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+    margin: 20px;
+}
+
+#quote{
+  padding-top: 30px;
+}
+
+/* Main Page CSS */  
+  #search {
+    justify-content: center; /* Center the items horizontally */
+    max-height: 600px;
+  }
+
+  #search-bar{
+    margin-bottom: 30px;
+  }
+
+  ul#book-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  ul#book-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 25%;
+    margin: 20px;
+    padding: 30px;
+    background-color: var(--choco);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px var(--cream);
+    padding: 10px; /* Add padding */
+  }
+  
+  ul#book-list li h3 {
+    margin: 0; /* Reset margin to remove extra space */
+    font-size: 1.2rem;
+    font-weight: bold; /* Make title bold */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Cut off text if it's too long */
+  }
+  
+  ul#book-list li p {
+    margin: 0; /* Reset margin */
+    font-size: 0.9em;
+  }
+  
+  .book-list-btn{
+    display: flex; /* Added */
+    justify-content: center; /* Added */
+    align-items: center; /* Vertically center the button text */
+    width: 100%; /* Make the button take full width */  
+    background-color: var(--choco);
+    border: 2px solid var(--cream);
+    border-radius: 30px;
+    color: var(--cream);
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    height: 40px;
+
+    transition: 0.2s;
+    margin-top: 30px;
+  }
+  
+  /* Text details of the book */
+  #book-d-title {
+    color: #E0C097;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    overflow: hidden;
+    font-style: oblique;
+  }
+  
+  #book-d-author,
+  #book-d-genre {
+    color: var(--cream);
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .book-list-btn:hover {
+    background-color: var(--darkchoco);
+    text-decoration: none;
+    color: var(--cream);
+  }
+
+  #error-message{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color:#497174;
+    width: 40%;
+    height: 50px;
+    border-radius: 4px;
+    margin-left: 31%;
+    margin-top: 40px;
+  }
+
+
+/* Form CSS */
+
+form {
+    background-color: var(--cream);
+    color: var(--darkchoco);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+label {
+    color: var(--darkchoco);
+  }
+  
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+input[type="file"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+input[type="submit"] {
+    width: 100%;
+    background-color: var(--autumn);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: large;
+  }
+  
+input[type="submit"]:hover {
+    background-color: var(--choco);
+  }
+  
+/* Bookpage */
+
+#post-form {
+    width: 50%;
+    margin: 40px;
+    margin-left: 25%;
+}
+
+/* Book Details Page - Landin Page */
+/* Container for the book details */
+#book-details {
+    background-color:var(--autumn);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--cream);
+    margin: 20px auto;
+    max-width: 60%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#book-details h3{
+  color: var(--darkchoco);
+  font-weight: 600;
+}
+
+#book-details p{
+  padding: 5px;
+  margin: 5px;
+}
+
+#book-details span{
+  color: var(--darkchoco);
+}
+
+#book-details button{
+  width: 100%;
+}
+
+  /* Form Elements - Sign-up/Login */
+
+main {
+  display: flex;
+  align-items: top;
+}
+
+/* INTRO SECTION */
+.intro {
+  display: block;
+  margin: 20px;
+}
+
+.intro h1 {
+  font-size: 3rem;
+}
+
+.intro p {
+  line-height: 1.5;
+  display: block;
+  text-align: justify;
+}
+
+
+/* SIGN UP SECTION */
+.top-submit-btn {
+  width: 470px;
+  height: 50px;
+  
+  border: 2px solid var(--cream);
+  border-radius: 30px;
+  box-shadow: var(--cream) 4px 4px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  touch-action: manipulation;
+  letter-spacing: 0.2rem;
+
+  color: var(--cream);
+  background-color: var(--autumn);
+  transition: 0.4s;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.top-submit-btn:hover {
+  background-color: var(--choco);
+  text-decoration: none;
+  color: var(--cream);
+}
+
+.top-submit-btn:active {
+  box-shadow: var(--cream) 1px 1px 0 0;
+  transform: translate(3px, 3px);
+}
+
+#form-full {
+  margin: 20px;
+  margin-left: 50px;
+  box-shadow: 2px 5px 6px var(--choco);
+  border-radius: 8px;
+  color: var(--darkchoco);
+  width: 500px;
+  height: fit-content;
+}
+
+.input-form {
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-form div {
+  padding: 1%;
+  margin: 20px;
+}
+
+.input-form input {
+  min-width: 400px;
+  padding: 4%;
+  border-radius: 5px;
+  background-color: #EFF5F5;
+  border: 1px solid #497174;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-form input:focus {
+  outline: none;
+  border: 1px solid #497174;
+  box-shadow: 0 0 10px #c1c1c1;
+}
+
+/* STYLING FOR INPUT FIELDS & MESSAGES */
+.success {
+  border: 1px solid hsl(76, 78%, 45%);
+  background-color: hsla(76, 78%, 45%, .3);
+}
+
+.failed {
+  border: 1px solid hsl(0, 100%, 74%);
+  background-color: hsla(354, 100%, 66%, .3);
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+
+.error-txt {
+  color: hsl(0, 100%, 74%);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.success-txt {
+  color: hsl(76, 78%, 45%);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.input-form .txt {
+  text-align: right;
+}
+
+.btm-submit-btn {
+  width: 400px;
+  padding: 4%;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: var(--cream);
+  background-color: var(--darkchoco);
+  box-shadow: 1px 3px 5px var(--choco);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btm-submit-btn:hover {
+  background-color: var(--autumn);
+  color: var(--darkchoco);
+}
+
+.input-form p {
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.terms {
+  font-weight: 700;
+  color: #EB6440;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  text-decoration: none;
+}
+
+/* UNDERLINE ANIMATION FOR TERMS */
+.terms:hover {
+  color: var(--darkchoco);
+}
+
+.terms::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #497174;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.terms:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* PLACEHOLDER SUPPORT */
+::placeholder { /* Support for Chrome, Firefox, Opera, Safari 10.1+ */
+  color: hsla(249, 10%, 26%, .6);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+:-ms-input-placeholder { /* Support for Internet Explorer 10-11 */
+  color: hsla(249, 10%, 26%, .6);
+  font-size: 14px;
+}
+
+::-ms-input-placeholder { /* Support for Microsoft Edge */
+  color: hsla(249, 10%, 26%, .6);
+  font-size: 14px;
+}
+
+/* Any devices, 1200px and below*/
+@media only screen and (max-width: 1200px) {
+  main {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* INTRO SECTION */
+  .intro {
+    margin-bottom: 100px;
+  }
+  
+  .intro h1 {
+    font-size: 1.8rem;
+  }
+  
+  /* SIGN UP SECTION */
+  .top-submit-btn {
+    width: 330px;
+    height: 80px;
+    padding: 0 20%;
+  }
+  
+  .input-form input {
+    width: 280px;
+    padding: 6%;
+  }
+  
+  .btm-submit-btn {
+    width: 280px;
+    padding: 6%;
+  }
+  
+  .input-form p {
+    padding: 0 11%;
+  }
+}
+
+@media only screen and (min-width: 545px) and (max-width: 1200px) {
+  .top-submit-btn {
+    padding: 0 15%;
+  }
+}
+
+#login-redirect {
+  display: flex;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+#login-redirect a{
+  padding-left: 5px;
+  color: #EB6440;
+}
+
+#login-redirect a:hover {
+  text-decoration: none;
+  color: var(--darkchoco);
+}
+
+#signup-title{
+  font-size: 1.7em;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Add mobile-responsive CSS here */
+  #nav-bar {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  }
+  #nav-bar .main {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  }
+  #nav-bar .navlist, .navlist-e {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  text-align: center;
+  }
+  #nav-bar .navlist-e .dropdown-menu {
+  position: relative;
+  }
+  #search {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  }
+  ul#book-list li {
+  width: 100%;
+  }
+  #error-message{
+  width:100%;
+  margin-left: 0%;
+  }
+  }
+  
+  @media only screen and (max-width: 400px) {
+  /* Add more mobile-responsive CSS here */
+  #title {
+  font-size: x-large;
+  }
+  #nav-bar a {
+  font-size: medium;
+  }
+  ul#book-list li h3 {
+  font-size: 1em;
+  }
+  ul#book-list li p {
+  font-size: 0.8em;
+  }
+  }
+
+  @media (min-width: 768px) {
+    .button-74 {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
+
+/* Layout Css for half */
+.split-layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-half {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.right-half {
+  width: 30%;
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .split-layout {
+    flex-direction: column;
+  }
+
+  .left-half,
+  .right-half {
+    width: 100%;
+  }
+}
+
+
+/* Add padding feature */
+.add-padding {
+  padding-top: 10px;
+  margin-top: 20px;
+}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <!-- Intro Section -->
+  <section class="intro" id="intro-2"> 
+    <div class="container split-layout">
+      <div class="left-half">
+          <h1>Sign Up and Start Trading Your Favorite Books</h1>
+          <p>One reader's treasure is another reader's delight, and with our platform, you can easily trade and discover new books to add to your personal library.</p>
+          <a class="top-submit-btn btn" href="">Sign up now</a>
+      </div>
+      <div class="right-half">
+        <div id="search">
+          <form id="search-bar" method="GET" action="{{ url_for('main.index') }}">
+              <p>Search for desired book below by either entering book name or the author name.</p>
+              <label for="book-name">Title: </label>
+              <input type="text" id="book-name" class="book-name" style="width: 50;" />
+              <label for="author">Author: </label>
+              <input type="text" id="book-auth" class="book-auth" style="width:50" />
+              <input type="submit" id="search-btn btn" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block available_books %}
+  <div class="container add-padding">
+    <h2 class="centered-h2">Available Books</h2>
+    <p id="intro-text" style="text-align:center;">Find a selection of available book listings available for trade.</p>
+
+    <ul id="book-list">
+        {% for book in books %}
+            <li>
+                <h3 id="book-d-title">{{ book[0] }}</h3>
+                <p id="book-d-author">Author: {{ book[1] }}</p>
+                <p id="book-d-genre">Score: {{ book[2] }}</p>
+                <a class="book-list-btn btn" href="{{ url_for('main.book_details', book_name=book[0]) }}">View Book</a>
+            </li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<main>
+    <section class="intro"> <!-- Intro Section -->
+        <h1>Sign Up for BookXchange</h1>
+        <p>Join our community of book lovers. Sign up and start trading your favorite books with others.</p>
+    </section>
+
+    <section> <!-- Sign Up Section-->
+        <form id="form-full" action="/signup" method="POST">
+            <div class="input-form">
+                <h1 id="signup-title">Sign Up Here!</h1>
+
+                <div>
+                    <label for="username">Username:</label>
+                    <input class="fname-field" id="username" type="text" name="username" placeholder="Username" required>
+                    <p class="fname-error-message fname-success-message txt"></p>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input class="email-field" id="email" type="email" name="email" placeholder="Email Address" required>
+                    <p class="email-error-message email-success-message txt"></p>
+                </div>
+
+                <div>
+                    <label for="pwd-field">Password:</label>
+                    <input class="pwd-field" id="pwd-field" type="password" name="pwd" placeholder="Password" required>
+                    <p class="pwd-error-message pwd-success-message txt"></p>
+                </div>
+
+                <div>
+                    <label for="pwd-field">Confirm your password:</label>
+                    <input class="pwd-field" type="password" name="pwd-2" placeholder="Re-type Password" required>
+                    <p class="pwd-error-message pwd-success-message txt"></p>
+                </div>
+
+                <div>
+                    <button class="btm-submit-btn" type="submit">Sign Up And Start Trading!</button>
+                </div>
+
+                <p>By clicking the button, you are agreeing to our <span class="terms">Terms and Services</span></p>
+            </div>
+
+            <div id="login-redirect">
+                <p>Already have an account? </p><a href="{{ url_for('main.login') }}">Login</a>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

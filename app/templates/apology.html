@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- https://memegen.link/ -->
+    <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
+    <a class="btm-submit-btn" href="{{ url_for('main.login') }}">Go back to homepage</a>
+{% endblock %}

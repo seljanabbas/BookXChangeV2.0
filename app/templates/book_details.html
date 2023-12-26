@@ -2,14 +2,17 @@
 
 {% block content %}
   <div class="container add-padding" id="book-details">
-    <h2><span>{{ book[0] }}</span></h2>
-    <p id="book-d-author"><span>Author:</span> {{ book[1] }}</p>
-    <p id="book-d-genre"><span>Average Rating:</span> {{ book[2] }}</p>
-    <p><span>Language:</span> {{ book[3] }}</p>
-    <p><span>Number of Pages:</span> {{ book[4] }}</p>
-    <p><span>Ratings Count:</span> {{ book[5] }}</p>
-    <p><span>Publication Date:</span> {{ book[6] }}</p>
-    <p><span>Publisher:</span> {{ book[7] }}</p>
-    <button class="top-submit-btn btn" type="submit">Add to My Books</button>
+    <h2><span>{{ book[1] }}</span></h2>
+    <p id="book-d-author"><span>Author:</span> {{ book[2] }}</p>
+    <p id="book-d-genre"><span>Average Rating:</span> {{ book[3] }}</p>
+    <p><span>Language:</span> {{ book[4] }}</p>
+    <p><span>Number of Pages:</span> {{ book[5] }}</p>
+    <p><span>Ratings Count:</span> {{ book[6] }}</p>
+    <p><span>Publication Date:</span> {{ book[7] }}</p>
+    <p><span>Publisher:</span> {{ book[8] }}</p>
+    
+    <form id="book-details-btn" method="POST" action="{{ url_for('main.add_to_my_books', book_id=book[0]) }}" style="background-color: transparent;">
+      <button class="book-list-btn btn" type="submit">Add to My Books</button>
+    </form>
   </div>
 {% endblock %}

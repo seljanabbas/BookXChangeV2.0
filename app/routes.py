@@ -148,18 +148,13 @@ def logout():
     flash('Logout successful!', 'success')
     return redirect(url_for('main.index'))
 
-@main_bp.route('/list_book', methods=['GET', 'POST'])
-@login_required
-def list_book():
-    # Handle listing books logic
-    pass
-
 def get_book_info(book_name):
     conn = sqlite3.connect(database_file)
     cursor = conn.cursor()
 
     cursor.execute('''
         SELECT
+            book_id,
             title,
             authors,
             average_rating,
@@ -178,6 +173,43 @@ def get_book_info(book_name):
 
     return detailed_book_info
 
+@main_bp.route('/list_book', methods=['GET', 'POST'])
+@login_required
+def list_book():
+    # Handle listing books logic
+    if request.method == 'POST':
+        title = request.form.get('title')
+        author = request.form.get('author')
+        description = request.form.get('description')
+        state = request.form.get('state')
+        rating = request.form.get('rating')
+        num_pages = request.form.get('num_pages')
+        publication_date = request.form.get('publication_date')
+        publisher = request.form.get('publisher')
+
+        if not title:
+            return apology('please enter a valid title', 400)
+        elif not author:
+            return apology('please enter a valid author(s)', 400)
+        
+        conn = sqlite3.connect(database_file)
+        cursor = conn.cursor()
+
+        cursor.execute('''
+            INSERT INTO books (title, authors, average_rating, language_code, num_pages, ratings_count, publication_date, publisher)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (title, author, rating, 'en', num_pages, 1, publication_date, publisher))
+        
+        conn.commit()
+        conn.close()
+        
+        book = get_book_info(title)
+        return render_template('book_details.html', book=book)
+
+    else:
+        return render_template('listbook.html')
+        
+
 @main_bp.route('/book/<book_name>', methods=['GET'])
 def book_details(book_name):
     # Fetch detailed book information
@@ -190,9 +222,82 @@ def book_details(book_name):
         # Handle the case where the book is not found
         return render_template('error.html', message='Book not found'), 404
 
+@main_bp.route('/add_to_my_books/<int:book_id>', methods=['POST'])
+@login_required
+def add_to_my_books(book_id):
+    if request.method == 'POST':
+        # Get the user_id from the session
+        user_id = session['user_id']
+
+        # Connect to the SQLite users database
+        conn = sqlite3.connect(user_database_file)
+        cursor = conn.cursor()
+
+        # Add the book to the user's collection
+        cursor.execute("INSERT INTO user_books (user_id, book_id) VALUES (?, ?)", (user_id, book_id))
+        conn.commit()
+        flash('Book added to your collection successfully', 'success')
+
+        # Close the database connection
+        conn.close()
+
+        return redirect(url_for('main.my_books'))
 
 @main_bp.route('/my_books', methods=['GET'])
 @login_required
 def my_books():
-    # Handle my books logic
-    pass
+    # Get the user_id from the session
+    user_id = session['user_id']
+
+    # Connect to the SQLite users database
+    conn_users = sqlite3.connect(user_database_file)
+    cursor_users = conn_users.cursor()
+
+    # Fetch book IDs for the user
+    cursor_users.execute('''
+        SELECT book_id FROM user_books WHERE user_id = ?
+    ''', (user_id,))
+
+    book_ids = cursor_users.fetchall()
+
+    # Close the connection to the users database
+    conn_users.close()
+
+    # Connect to the SQLite books database
+    conn_books = sqlite3.connect(database_file)
+    cursor_books = conn_books.cursor()
+
+    # Fetch book details based on book IDs
+    user_books = []
+    for book_id in book_ids:
+        cursor_books.execute('''
+            SELECT book_id, title, authors, average_rating, language_code, num_pages, ratings_count, publication_date, publisher
+            FROM books
+            WHERE book_id = ?
+        ''', (book_id[0],))
+        book_details = cursor_books.fetchone()
+        user_books.append(book_details)
+
+    # Close the connection to the books database
+    conn_books.close()    
+    return render_template('mybooks.html', user_books=user_books)
+
+@main_bp.route('/remove_book/<int:book_id>', methods=['POST'])
+@login_required
+def remove_book(book_id):
+    # Get the user_id from the session
+    user_id = session['user_id']
+
+    # Connect to the SQLite users database
+    conn = sqlite3.connect(user_database_file)
+    cursor = conn.cursor()
+
+    # Remove the book from the user's books
+    cursor.execute("DELETE FROM user_books WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+    conn.commit()
+    flash('Book removed from your collection successfully', 'success')
+
+    # Close the database connection
+    conn.close()
+
+    return redirect(url_for('main.my_books'))

@@ -1,1 +1,24 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container add-padding">
+        <h1>My Books</h1>
+
+        {% if user_books %}
+            <ul class="my-books-list">
+                {% for book in user_books %}
+                    <li>
+                        <a href="{{ url_for('main.book_details', book_name=book[1]) }}">
+                            <span id="book-d-title">{{ book[1] }}</span> <span id="book-d-author">by {{ book[2] }}</span>
+                        </a>
+                        <form id="remove-form" method="POST" action="{{ url_for('main.remove_book', book_id=book[0]) }}" style="background-color: transparent; display: inline;">
+                            <button type="submit" class="book-list-btn btn" id="remove_button">Remove</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books in your collection yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

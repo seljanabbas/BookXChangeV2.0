@@ -20,6 +20,10 @@ body {
   a {
     color: var(--autumn);
   }
+
+  a:hover {
+    color: var(--cream);
+  }
   
   #logo {
     display: block;
@@ -66,6 +70,8 @@ body {
   #search {
     justify-content: center; /* Center the items horizontally */
     max-height: 600px;
+    background-color: var(--cream);
+    border-radius: 20px;
   }
 
   #search-bar{
@@ -167,7 +173,7 @@ body {
 /* Form CSS */
 
 form {
-    background-color: var(--cream);
+  background-color: var(--cream);
     color: var(--darkchoco);
     padding: 20px;
     border-radius: 10px;
@@ -246,6 +252,10 @@ input[type="submit"]:hover {
 
 #book-details span{
   color: var(--darkchoco);
+}
+
+.book-details-btn {
+  background-color: var(--autumn);
 }
 
 #book-details button{
@@ -333,7 +343,7 @@ main {
 
 .input-form div {
   padding: 1%;
-  margin: 20px;
+  margin: 5px;
 }
 
 .input-form input {
@@ -540,6 +550,7 @@ main {
   position: relative;
   }
   #search {
+  background-color: var(--cream);
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -608,4 +619,25 @@ main {
 .add-padding {
   padding-top: 10px;
   margin-top: 20px;
+}
+
+/* My Book Section */
+.my-books-list {
+  list-style: none;
+  padding: 0;
+}
+
+.my-books-list li {
+  margin-bottom: 10px;
+}
+
+.remove-form {
+  display: inline; /* Display the form inline with the text */
+  margin-left: 10px; /* Add space between link and button */
+}
+
+.book-list-btn {
+  font-size: 1rem; /* Adjust font size */
+  padding: 5px 10px; /* Adjust padding for a smaller button */
+  max-width: 300px;
 }

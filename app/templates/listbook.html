@@ -1,25 +1,14 @@
 {% extends 'layout.html'%}
 
 {% block content %}
-    <form id="post-form" action="/book.php">
+    <form id="post-form" action="/list_book" method="POST">
         <h2 class="centered-h2">Post a Book Listing</h2>
         <label for="title-input">Title:</label><br>
         <input type="text" id="title-input" name="title"><br>
         <label for="author-input">Author:</label><br>
         <input type="text" id="author-input" name="author"><br>
-        <label for="genre-input">Please select genre:</label><br>
-        <select id="genre-input" name="genre">
-          <option value="fiction">Fiction</option>
-          <option value="non-fiction">Non-fiction</option>
-          <option value="biography">Biography</option>
-          <option value="self-help">Self-help</option>
-          <option value="sci-fi">Sci-fi</option>
-        </select><br><br>
-        <input type="text" id="genre-input" name="genre"><br>
         <label for="description-input">Description:</label><br>
         <textarea id="description-input" name="description"></textarea><br>
-        <label for="image-input">Please upload an image of the book:</label><br>
-        <input type="file" id="image-input" name="image"><br><br>
         <label for="state">Please select the option which matches most:</label> <br>
         <select id="state" name="state">
           <option value="new">New</option>
@@ -28,7 +17,15 @@
           <option value="fair">Used, in fair condition</option>
           <option value="poor">Used, in poor condition</option>
         </select><br><br>
-        <input type="submit" id="post-listing" value="Post Listing"></button>
+        <label for="rating">Average rating of the book</label><br>
+        <input type="number" id="rating-input" name="rating"><br>
+        <label for="num_pages">Number of pages:</label><br>
+        <input type="number" id="num_pages_input" name="num_pages"><br>
+        <label for="publication_date">Publication Date of the book:</label><br>
+        <input type="date" id="publication_date_input" name="publication_date"><br>
+        <label for="publisher">Publisher:</label><br>
+        <input type="text" id="publisher-input" name="publisher"><br>
+        <input type="submit" id="post-listing" value="Post Listing">
       </form> 
       
 {% endblock %}

@@ -48,6 +48,10 @@ BookXChange is a platform dedicated to facilitating the exchange of books among 
 - Jinja templating
 - Werkzeug (for password hashing)
 
+## Dataset for Books Used
+
+Goodreads Dataset: https://www.kaggle.com/code/abdulahadarain/exploratory-analysis-of-the-goodreads-dataset
+
 ## Getting Started
 1. Clone the repository.
 2. Install the required dependencies: `pip install -r requirements.txt`.

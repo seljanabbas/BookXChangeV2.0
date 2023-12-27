@@ -1,5 +1,6 @@
-# BookXChange Application
-
+# BookXChange
+#### Video Demo:  https://youtu.be/LDf1iOn0WsA
+#### Description:
 BookXChange is a platform dedicated to facilitating the exchange of books among users. Users can explore, list, and manage their book collections with a focus on sharing and trading books with others.
 
 ## Functionalities
